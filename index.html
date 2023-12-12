@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saulės elektrinės vartotojo sąsaja</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Mantas Samaitis EIf-22 -->
+</head>
+<body>
+<div class="container">
+    <div>
+        <h1 class="mt-4">Saulės elektrinės metinė analizė</h1>
+        <p class="mt-4">Žemiau įveskite metinius pagamintos ir sunaudotos elektros energijos duomenis.</p>
+    </div>
+    <form id="forma">
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Mėnuo</th>
+                            <th scope="col">Suvartota (kWh)</th>
+                            <th scope="col">Pagaminta (kWh)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><label for="sausis">Sausis</label></td>
+                            <td><input type="number" class="form-control" name="consumption[]"></td>
+                            <td><input type="number" class="form-control" name="production[]"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="vasaris">Vasaris</label></td>
+                            <td><input type="number" class="form-control" name="consumption[]"></td>
+                            <td><input type="number" class="form-control" name="production[]"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="kovas">Kovas</label></td>
+                            <td><input type="number" class="form-control" name="consumption[]"></td>
+                            <td><input type="number" class="form-control" name="production[]"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="balandis">Balandis</label></td>
+                            <td><input type="number" class="form-control" name="consumption[]"></td>
+                            <td><input type="number" class="form-control" name="production[]"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="geguze">Gegužė</label></td>
+                            <td><input type="number" class="form-control" name="consumption[]"></td>
+                            <td><input type="number" class="form-control" name="production[]"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="birzelis">Birželis</label></td>
+                            <td><input type="number" class="form-control" name="consumption[]"></td>
+                            <td><input type="number" class="form-control" name="production[]"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Mėnuo</th>
+                            <th scope="col">Suvartota (kWh)</th>
+                            <th scope="col">Pagaminta (kWh)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><label for="liepa">Liepa</label></td>
+                            <td><input type="number" class="form-control" name="consumption[]"></td>
+                            <td><input type="number" class="form-control" name="production[]"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="rugpjutis">Rugpjūtis</label></td>
+                            <td><input type="number" class="form-control" name="consumption[]"></td>
+                            <td><input type="number" class="form-control" name="production[]"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="rugsejis">Rugsėjis</label></td>
+                            <td><input type="number" class="form-control" name="consumption[]"></td>
+                            <td><input type="number" class="form-control" name="production[]"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="spalis">Spalis</label></td>
+                            <td><input type="number" class="form-control" name="consumption[]"></td>
+                            <td><input type="number" class="form-control" name="production[]"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="lapkritis">Lapkritis</label></td>
+                            <td><input type="number" class="form-control" name="consumption[]"></td>
+                            <td><input type="number" class="form-control" name="production[]"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="gruodis">Gruodis</label></td>
+                            <td><input type="number" class="form-control" name="consumption[]"></td>
+                            <td><input type="number" class="form-control" name="production[]"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Pateikti</button>
+    </form>
+    <div id="rezultatas" class="mt-4">
+        <h2>Rezultatai</h2>
+
+        <div class="mt-4">
+            <canvas id="grafikas"></canvas>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Metinė grynoji galia</h5>
+                        <p class="card-text" id="netPower"></p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Per metus pagaminta</h5>
+                        <p class="card-text" id="visoPagaminta"></p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Per metus sunaudota</h5>
+                        <p class="card-text" id="visoSunaudota"></p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Per mėnesį vid. pagaminta</h5>
+                        <p class="card-text" id="vidPagaminta"></p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Per mėnesį vid. sunaudota</h5>
+                        <p class="card-text" id="vidSunaudota"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
